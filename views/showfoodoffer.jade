@@ -1,0 +1,57 @@
+extends layout
+
+block body
+  script(src="https://maps.googleapis.com/maps/api/js")
+  script(src='/js/googlemaps.js')
+  
+  .show_offer
+    .row
+      .col-lg-6.col-lg-offset-1
+        form.bs-example.form-horizontal(method='post', action='')
+          fieldset
+            legend Offer Details
+            p.last-p.
+            .form-group
+              label.col-lg-2.control-label(for='product') Product
+              .col-lg-8
+                input#product.form-control(type='text', name='product', value="#{foodoffer.product}", disabled="disabled")
+            .form-group
+              label.col-lg-2.control-label(for='quantity') Quantity
+              .col-lg-8
+                input#quantity.form-control(type='text', name='quantity', value="#{foodoffer.quantity}", disabled="disabled")
+            .form-group
+              label.col-lg-2.control-label(for='price') Price (€)
+              .col-lg-8
+                input#price.form-control(type='text', name='price', value="#{foodoffer.price}", disabled="disabled")
+            .form-group
+              label.col-lg-2.control-label(for='street') Street
+              .col-lg-8
+                input#street.form-control(type='text', name='street', value="#{foodoffer.street}", disabled="disabled")
+            .form-group
+              label.col-lg-2.control-label(for='street_number') Street number
+              .col-lg-8
+                input#street_number.form-control(type='text', name='street_number', value="#{foodoffer.street_number}", disabled="disabled")
+            .form-group
+              label.col-lg-2.control-label(for='postal_code') Postal code
+              .col-lg-8
+                input#postal_code.form-control(type='text', name='postal_code', value="#{foodoffer.postal_code}", disabled="disabled")
+            .form-group
+              label.col-lg-2.control-label(for='city') City
+              .col-lg-8
+                input#city.form-control(type='text', name='city', value="#{foodoffer.locality}", disabled="disabled")
+            .form-group
+              label.col-lg-2.control-label(for='country') Country
+              .col-lg-8
+                input#country.form-control(type='text', name='country', value="#{foodoffer.country}", disabled="disabled")
+            .form-group
+              label.col-lg-2.control-label(for='comment') Comment
+              .col-lg-8
+                textarea#comment.form-control(type='text', name='comment', disabled="disabled") #{foodoffer.comment}
+            if(foodoffer.status == 'open')
+              .form-group
+                .col-lg-10.col-lg-offset-2
+                  a.btn.btn-primary(href='/foodoffer/request/new/#{foodoffer._id}') Send a Request
+      .col-lg-5
+        br
+        br
+        #map_canvas(style='width:500px;height:380px;')

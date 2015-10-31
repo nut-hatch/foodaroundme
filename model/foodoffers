@@ -1,0 +1,22 @@
+var mongoose = require('mongoose');
+
+var foodOffersSchema = new mongoose.Schema({
+    product : String,
+    quantity : String,
+    price : String,
+    comment : String,
+    street : String,
+    street_number : String,
+    country : String,
+    administrative_area_level_1 : String,
+    administrative_area_level_2 : String,
+    administrative_area_level_3 : String,
+    locality : String,
+    postal_code : String,
+    creation_date : Date,
+    creation_username : String,
+    public_offer : Boolean,
+    status : String
+});
+
+module.exports = mongoose.model('FoodOffers', foodOffersSchema);

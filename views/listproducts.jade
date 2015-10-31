@@ -1,0 +1,15 @@
+div
+  br
+  br
+  p This list will help you to find a fair price for your offer!
+  table.list
+    thead
+      tr 
+        th Product 
+        th Price 
+        
+    tbody
+      each product, index in products
+        tr
+          td #{product.name}
+          td #{product.price}€

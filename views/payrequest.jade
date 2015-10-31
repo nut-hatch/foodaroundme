@@ -1,0 +1,55 @@
+extends layout
+
+block body
+
+  .create_request
+    .row
+      .col-lg-6.col-lg-offset-1
+        form.bs-example.form-horizontal(method='post', action='')
+          fieldset
+            legend Review Offer
+            p.last-p.
+            .form-group
+              label.col-lg-2.control-label(for='product') Product
+              .col-lg-8
+                input#product.form-control(type='text', name='product', value="#{foodoffer.product}", disabled="disabled")
+            .form-group
+              label.col-lg-2.control-label(for='quantity') Quantity
+              .col-lg-8
+                input#quantity.form-control(type='text', name='quantity', value="#{foodoffer.quantity}", disabled="disabled")
+            .form-group
+              label.col-lg-2.control-label(for='price') Price (€)
+              .col-lg-8
+                input#price.form-control(type='text', name='price', value="#{foodoffer.price}", disabled="disabled")
+            .form-group
+              label.col-lg-2.control-label(for='comment') Offer Comment
+              .col-lg-8
+                textarea#comment.form-control(type='text', name='comment', disabled="disabled") #{foodoffer.comment}
+            .form-group
+              label.col-lg-2.control-label(for='date') Request Date
+              .col-lg-8
+                input#date.form-control(type='text', name='date', disabled='disabled', value='#{moment(request.date).format("DD/MM/YYYY")}')
+            .form-group
+              label.col-lg-2.control-label(for='time') Request Time
+              .col-lg-8
+                input#time.form-control(type='text', name='time', disabled='disabled', value='#{moment(request.date).format("HH:mm")}')
+            .form-group
+              label.col-lg-2.control-label(for='comment') Request Comment
+              .col-lg-8
+                textarea#comment.form-control(type='text', name='comment', placeholder='Comment', disabled='disabled') #{request.comment}
+    .row
+      .col-lg-6.col-lg-offset-1
+        form.bs-example.form-horizontal(method='post', action='')
+          fieldset
+            legend Choose Payment
+            p.last-p.
+            .form-group
+              label.col-lg-2.control-label(for='paymentmethod') Payment Method
+              .col-lg-8
+                select#paymentmethod.form-control(type='text', name='paymentmethod', value="#{foodoffer.product}")
+                  option(value='cash') Cash
+                  option(value='paypal') PayPal
+                  option(value='creditcard') Credit Card
+            .form-group
+              .col-lg-10.col-lg-offset-2
+                button.btn.btn-primary(type='submit') Pay

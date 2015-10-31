@@ -1,0 +1,26 @@
+extends layout
+
+block body
+
+  div
+    table.list
+      thead
+        tr 
+          th Username 
+          th Date 
+          th Comment 
+          th Status
+          th Accept
+          th Reject
+      tbody
+        each request, index in requests
+          tr
+            td #{request.username}
+            td #{moment(request.date).format("DD/MM/YYYY HH:mm")}
+            td #{request.comment}
+            td #{request.status}
+            td 
+              a(href='/foodoffer/request/accept/#{request._id}') Accept
+            td 
+              a(href='/foodoffer/request/reject/#{request._id}') Reject
+              

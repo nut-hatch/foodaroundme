@@ -1,0 +1,54 @@
+extends layout
+
+block body
+
+  .create_offer
+    .row
+      .col-lg-6.col-lg-offset-1
+        form.bs-example.form-horizontal(method='post', action='')
+          fieldset
+            legend Create Offer
+            p.last-p.
+            .form-group
+              label.col-lg-2.control-label(for='product') Product
+              .col-lg-8
+                input#product.form-control(type='text', name='product', placeholder='Product', autofocus)
+            .form-group
+              label.col-lg-2.control-label(for='quantity') Quantity
+              .col-lg-8
+                input#quantity.form-control(type='text', name='quantity', placeholder='Quantity')
+            .form-group
+              label.col-lg-2.control-label(for='price') Price (€)
+              .col-lg-8
+                input#price.form-control(type='text', name='price', placeholder='Price')
+            .form-group
+              label.col-lg-2.control-label(for='street') Street
+              .col-lg-8
+                input#street.form-control(type='text', name='street', placeholder='Street')
+            .form-group
+              label.col-lg-2.control-label(for='street_number') Street number
+              .col-lg-8
+                input#street_number.form-control(type='text', name='street_number', placeholder='Street number')
+            .form-group
+              label.col-lg-2.control-label(for='postal_code') Postal code
+              .col-lg-8
+                input#postal_code.form-control(type='text', name='postal_code', placeholder='Postal code')
+            .form-group
+              label.col-lg-2.control-label(for='city') City
+              .col-lg-8
+                input#city.form-control(type='text', name='city', placeholder='City', value='Lappeenranta', readonly='readonly')
+            .form-group
+              label.col-lg-2.control-label(for='country') Country
+              .col-lg-8
+                input#country.form-control(type='text', name='country', placeholder='Country', value='Finland', readonly='readonly')
+            .form-group
+              label.col-lg-2.control-label(for='comment') Comment
+              .col-lg-8
+                textarea#comment.form-control(type='text', name='comment', placeholder='Comment')
+            .form-group
+              .col-lg-10.col-lg-offset-2
+                button.btn.btn-primary(type='submit') Save
+      .col-lg-15.col-lg-offset-1
+        br
+        br
+        h2#results

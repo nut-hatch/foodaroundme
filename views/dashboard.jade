@@ -1,0 +1,137 @@
+extends layout
+
+block body
+
+  .dashboard
+    .jumbotron
+      .row
+        .col-lg-18
+          h2 Dashboard - Your offers and requests
+          br
+          p Here you can see your <strong>pending offers</strong>. Check incoming requests and accept them if they fit!
+          p
+            div
+              table.list
+                thead
+                  tr 
+                    th Product 
+                    th Quantity 
+                    th Price 
+                    th Date
+                    th Status
+                    th Requests
+                tbody
+                  each offer, index in foodoffers
+                    if(offer.status != 'paid')
+                      tr
+                        td #{offer.product}
+                        td #{offer.quantity}
+                        td #{offer.price}
+                        td #{moment(offer.creation_date).format("DD/MM/YYYY HH:mm")}
+                        td #{offer.status}
+                        td 
+                          a(href='/foodoffer/request/list/offer/#{offer._id}') Show Requests
+      .row
+        .col-lg-18
+          br
+          p Here you can see your <strong>paid offers</strong>. Once the food is handed over you can close the offer.
+          p
+            div
+              table.list
+                thead
+                  tr 
+                    th Product 
+                    th Quantity 
+                    th Price 
+                    th Date
+                    th Status
+                    th Review Requests
+                    th Close Offer
+                tbody
+                  each offer, index in foodoffers
+                    if(offer.status == 'paid')
+                      tr
+                        td #{offer.product}
+                        td #{offer.quantity}
+                        td #{offer.price}
+                        td #{moment(offer.creation_date).format("DD/MM/YYYY HH:mm")}
+                        td #{offer.status}
+                        td 
+                          a(href='/foodoffer/request/list/offer/#{offer._id}') Show Requests
+                        td 
+                          a(href='/foodoffer/close/#{offer._id}') Close
+      .row
+        .col-lg-18
+          br
+      .row
+        .col-lg-18
+          br
+          p Here you can see your <strong>pending requests</strong>. Wait for the response or cancel the request.
+          p
+            div
+              table.list
+                thead
+                  tr 
+                    th Username 
+                    th Date 
+                    th Comment 
+                    th Status
+                    th View Offer
+                    th Cancel
+                tbody
+                  each request, index in requests
+                    if(request.status == 'pending')
+                      tr
+                        td #{user.username}
+                        td #{moment(request.date).format("DD/MM/YYYY HH:mm")}
+                        td #{request.comment}
+                        td #{request.status}
+                        td 
+                          a(href='/foodoffer/#{request.offerid}') View Offer
+                        td 
+                          a(href='/foodoffer/request/cancel/#{request._id}') Cancel
+          p Here you can see your <strong>accepted requests</strong>. You can pay already online!
+          p
+            div
+              table.list
+                thead
+                  tr 
+                    th Username 
+                    th Date 
+                    th Comment 
+                    th Status
+                    th View Offer
+                    th Pay
+                tbody
+                  each request, index in requests
+                    if(request.status == 'accepted')
+                      tr
+                        td #{user.username}
+                        td #{moment(request.date).format("DD/MM/YYYY HH:mm")}
+                        td #{request.comment}
+                        td #{request.status}
+                        td 
+                          a(href='/foodoffer/#{request.offerid}') View Offer
+                        td 
+                          a(href='/foodoffer/request/pay/#{request._id}') Pay now
+          p Here you can see your <strong>paid requests</strong>. Go get your food!
+          p
+            div
+              table.list
+                thead
+                  tr 
+                    th Username 
+                    th Date 
+                    th Comment 
+                    th Status
+                    th View Offer
+                tbody
+                  each request, index in requests
+                    if(request.status == 'paid (cash)' || request.status == 'paid (paypal)' || request.status == 'paid (creditcard)')
+                      tr
+                        td #{user.username}
+                        td #{moment(request.date).format("DD/MM/YYYY HH:mm")}
+                        td #{request.comment}
+                        td #{request.status}
+                        td 
+                          a(href='/foodoffer/#{request.offerid}') View Offer

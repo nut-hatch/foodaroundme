@@ -1,0 +1,34 @@
+extends layout
+
+block body
+
+  div
+    table.list
+      thead
+        tr 
+          th Product 
+          th Quantity 
+          th Price 
+          th Postal Code
+          th City
+          th Country
+          th Date
+          th Comment
+          if user
+            th Details
+      tbody
+        each offer, index in foodoffers
+          if(offer.status == 'open')
+            tr
+              td #{offer.product}
+              td #{offer.quantity}
+              td #{offer.price}
+              td #{offer.postal_code}
+              td #{offer.locality}
+              td #{offer.country}
+              td #{moment(offer.creation_date).format("DD/MM/YYYY HH:mm")}
+              td #{offer.comment}
+              if user
+                td 
+                  a(href='/foodoffer/#{offer._id}') Details
+              

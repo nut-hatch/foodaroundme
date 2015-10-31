@@ -1,0 +1,27 @@
+extends layout
+
+block body
+
+  .create_request
+    .row
+      .col-lg-6.col-lg-offset-1
+        form.bs-example.form-horizontal(method='post', action='')
+          fieldset
+            legend Send Request
+            p.last-p.
+            .form-group
+              label.col-lg-2.control-label(for='date') Date
+              .col-lg-8
+                input#date.form-control(type='text', name='date', autofocus)
+            .form-group
+              label.col-lg-2.control-label(for='time') Time
+              .col-lg-8
+                input#time.form-control(type='text', name='time')
+            .form-group
+              label.col-lg-2.control-label(for='comment') Comment
+              .col-lg-8
+                textarea#comment.form-control(type='text', name='comment', placeholder='Comment')
+            .form-group
+              .col-lg-10.col-lg-offset-2
+                button.btn.btn-primary(type='submit') Send
+      .col-lg-6
